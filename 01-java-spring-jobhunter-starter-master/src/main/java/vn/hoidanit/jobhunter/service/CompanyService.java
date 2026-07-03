@@ -3,6 +3,7 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import vn.hoidanit.jobhunter.domain.Company;
@@ -20,8 +21,8 @@ private final CompanyRepository companyRepository;
     public Company createCompany(Company company) {
         return this.companyRepository.save(company);
     }
-    public ResultPaginationDTO getAllCompanies(Pageable pageable) {
-        Page<Company> page = this.companyRepository.findAll(pageable);
+    public ResultPaginationDTO getAllCompanies(Specification<Company> spec, Pageable pageable) {
+        Page<Company> page = this.companyRepository.findAll(spec, pageable);
         ResultPaginationDTO result = new ResultPaginationDTO();
         Meta meta = new Meta();
         

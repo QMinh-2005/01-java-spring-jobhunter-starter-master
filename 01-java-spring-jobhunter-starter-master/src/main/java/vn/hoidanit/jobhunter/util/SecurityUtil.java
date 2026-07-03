@@ -65,12 +65,12 @@ public SecurityUtil(JwtEncoder jwtEncoder) {
             .filter(authentication -> authentication.getCredentials() instanceof String)
             .map(authentication -> (String) authentication.getCredentials());
     }
-    public static boolean isAuthenticated() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return authentication != null && getAuthorities(authentication).noneMatch(AuthoritiesConstant.ANONYMOUS::equals);
-    }
-    private static Stream<String> getAuthorities(Authentication authentication) {
-        return authentication.getAuthorities().stream()
-            .map(GrantedAuthority::getAuthority);
-    }
+    // public static boolean isAuthenticated() {
+    //     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    //     return authentication != null && getAuthorities(authentication).noneMatch(AuthoritiesConstant.ANONYMOUS::equals);
+    // }
+    // private static Stream<String> getAuthorities(Authentication authentication) {
+    //     return authentication.getAuthorities().stream()
+    //         .map(GrantedAuthority::getAuthority);
+    // }
 }
